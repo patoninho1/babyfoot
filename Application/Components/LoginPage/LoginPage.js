@@ -11,7 +11,7 @@ export default class LoginPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {text: 'Placeholder'};
+        this.state = {text: 'Login'};
     }
 
     // Fonction qui récupère la position actuelle de l'utilisateur
@@ -21,32 +21,30 @@ export default class LoginPage extends Component {
 
     render() {
         return (
-
-                <View style={{flex: 1}} >
-
-                    <Image source={require('./img/logo.png')} />
-
-                    <View style={{flex: 1, alignItems: 'stretch', backgroundColor: 'powderblue'}} />
-                    <View style={{flex: 2, alignItems: 'stretch', backgroundColor: 'skyblue'}} />
-                    <View style={{flex: 3, alignItems: 'stretch', backgroundColor: 'steelblue'}} />
+                <View  style={styles.mainContainer}>
 
 
-                    <TextInput
-                        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                        onChangeText={(text) => this.setState({text})}
-                        value={this.state.text}
-                    />
+                    <View style={styles.top}>
+                        <Image style={styles.img} source={require('./img/logo.png')} />
+                    </View>
 
-                    <TouchableHighlight onPress={() => this.ValideDateNickName()} style={styles.button}>
-                        <Text style={styles.buttonText}>Confirm </Text>
-                    </TouchableHighlight>
+                    <View style={styles.midle} >
+                        <TextInput
+                            style={styles.textinput}
+                            onChangeText={(text) => this.setState({text})}
+                            value={this.state.text}
+                        />
+                    </View>
+
+                    <View style={styles.bottom} >
+                        <TouchableHighlight onPress={() => this.ValideDateNickName()} style={styles.button}>
+                            <Text style={styles.buttonText}>Connection </Text>
+                        </TouchableHighlight>
+                    </View>
+
+
 
                 </View>
-
-
-
-
-
         );
 
 
@@ -58,14 +56,65 @@ export default class LoginPage extends Component {
 
 const styles = StyleSheet.create({
 
-    button: {
-        height: 40,
-        backgroundColor: 'blue',
-        borderColor: 'blue',
+    mainContainer: {
+        flex: 1,
     },
-    buttonText: {
-        fontSize: 17,
-        fontWeight: '500',
+
+    top: {
+        flex: 3,
+        alignItems: 'center',
+        backgroundColor: 'steelblue',
+        justifyContent: 'center',
+    },
+    midle: {
+        flex: 2,
+        alignItems: 'center',
+        backgroundColor: 'skyblue',
+        justifyContent: 'center',
+    },
+    bottom: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: 'powderblue',
+        justifyContent: 'center',
+    },
+
+
+    img: {
+        marginTop: 15,
+        height:300,
+        width:360,
+    },
+    textinput: {
+        fontSize: 30,
+        padding: 10,
+        height: 80,
+        width:250,
+        borderColor: 'white',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
         color: 'white',
     },
+    text: {
+        height: 80,
+        width:200,
+        borderColor: 'gray',
+        borderWidth: 1,
+    },
+    button: {
+        height: 80,
+        width:250,
+        backgroundColor: 'orange',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: 'skyblue',
+        borderWidth: 2,
+    },
+    buttonText: {
+        fontSize: 30,
+        fontWeight: '500',
+        color: 'white'
+    },
+
 });
