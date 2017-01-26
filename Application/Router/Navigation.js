@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
 
-import LoginPage from '../Components/LoginPage/LoginPage';
+import LoginPage from '../Components/LoginPage';
 import HomePage from '../Components/HomePage/HomePage'
 
 const routes = [

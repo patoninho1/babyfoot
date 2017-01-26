@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {Text, Navigator, TextInput, TouchableHighlight, View, Image,StyleSheet} from 'react-native';
 import Dimensions from 'Dimensions';
 const {width, height} = Dimensions.get('window');
-{/*import styles from './style.css';*/}
+import s from './LoginPageStyle';
 
 export default class LoginPage extends Component {
 
@@ -21,24 +21,24 @@ export default class LoginPage extends Component {
 
     render() {
         return (
-                <View  style={styles.mainContainer}>
+                <View  style={s.mainContainer}>
 
 
-                    <View style={styles.top}>
-                        <Image style={styles.img} source={require('./img/logo.png')} />
+                    <View style={s.top}>
+                        <Image style={s.img} source={require('./img/logo.png')} />
                     </View>
 
-                    <View style={styles.midle} >
+                    <View style={s.midle} >
                         <TextInput
-                            style={styles.textinput}
+                            style={s.textinput}
                             onChangeText={(text) => this.setState({text})}
                             value={this.state.text}
                         />
                     </View>
 
-                    <View style={styles.bottom} >
-                        <TouchableHighlight onPress={() => this.ValideDateNickName()} style={styles.button}>
-                            <Text style={styles.buttonText}>Connection </Text>
+                    <View style={s.bottom} >
+                        <TouchableHighlight onPress={() => this.ValideDateNickName()} style={s.button}>
+                            <Text style={s.buttonText}>Connection </Text>
                         </TouchableHighlight>
                     </View>
 
@@ -51,70 +51,3 @@ export default class LoginPage extends Component {
     }
 
 }
-
-
-
-const styles = StyleSheet.create({
-
-    mainContainer: {
-        flex: 1,
-    },
-
-    top: {
-        flex: 3,
-        alignItems: 'center',
-        backgroundColor: 'steelblue',
-        justifyContent: 'center',
-    },
-    midle: {
-        flex: 2,
-        alignItems: 'center',
-        backgroundColor: 'skyblue',
-        justifyContent: 'center',
-    },
-    bottom: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: 'powderblue',
-        justifyContent: 'center',
-    },
-
-
-    img: {
-        marginTop: 15,
-        height:300,
-        width:360,
-    },
-    textinput: {
-        fontSize: 30,
-        padding: 10,
-        height: 80,
-        width:250,
-        borderColor: 'white',
-        borderWidth: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-    },
-    text: {
-        height: 80,
-        width:200,
-        borderColor: 'gray',
-        borderWidth: 1,
-    },
-    button: {
-        height: 80,
-        width:250,
-        backgroundColor: 'orange',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: 'skyblue',
-        borderWidth: 2,
-    },
-    buttonText: {
-        fontSize: 30,
-        fontWeight: '500',
-        color: 'white'
-    },
-
-});
