@@ -1,0 +1,18 @@
+#mainContainer: {
+    flex: 1,
+    //flexDirection: 'column',
+    //justifyContent: 'center',
+    alignItems: 'stretch'
+}
+
+button: {
+    height: 40,
+    backgroundColor: 'blue',
+    borderColor: 'blue'
+}
+
+#buttonText: {
+    fontSize: 17,
+    fontWeight: '500',
+    color: 'white'
+}

@@ -23,7 +23,7 @@ export default class Navigation extends Component {
                     Navigator.SceneConfigs.FadeAndroid}
                 renderScene={(route, navigator) =>  this.renderScene(route,navigator)
                 }
-                style={{padding: 100}}            />
+                        />
         );
     }
 
@@ -39,7 +39,7 @@ export default class Navigation extends Component {
 
         if (route.index=== 1) {
             return (
-                <HomePage navigator={navigator} routes={routes}/>
+                <HomePage  navigator={navigator} routes={routes}/>
 
             );
         }

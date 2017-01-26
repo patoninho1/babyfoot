@@ -2,7 +2,10 @@
  * Created on 20/01/2017.
  */
 import React, {Component} from 'react';
-import {Text, Navigator, TextInput, TouchableHighlight, StyleSheet, View} from 'react-native';
+import {Text, Navigator, TextInput, TouchableHighlight, View, Image,StyleSheet} from 'react-native';
+import Dimensions from 'Dimensions';
+const {width, height} = Dimensions.get('window');
+{/*import styles from './style.css';*/}
 
 export default class LoginPage extends Component {
 
@@ -18,17 +21,32 @@ export default class LoginPage extends Component {
 
     render() {
         return (
-            <View>
-                <TextInput
-                    style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                    onChangeText={(text) => this.setState({text})}
-                    value={this.state.text}
-                />
-                {/*Button to validate the nickname choosen */}
-                <TouchableHighlight onPress={() => this.ValideDateNickName()} style={styles.button}>
-                    <Text style={styles.buttonText}>Confirm </Text>
-                </TouchableHighlight>
-            </View>
+
+                <View style={{flex: 1}} >
+
+                    <Image source={require('./img/logo.png')} />
+
+                    <View style={{flex: 1, alignItems: 'stretch', backgroundColor: 'powderblue'}} />
+                    <View style={{flex: 2, alignItems: 'stretch', backgroundColor: 'skyblue'}} />
+                    <View style={{flex: 3, alignItems: 'stretch', backgroundColor: 'steelblue'}} />
+
+
+                    <TextInput
+                        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                        onChangeText={(text) => this.setState({text})}
+                        value={this.state.text}
+                    />
+
+                    <TouchableHighlight onPress={() => this.ValideDateNickName()} style={styles.button}>
+                        <Text style={styles.buttonText}>Confirm </Text>
+                    </TouchableHighlight>
+
+                </View>
+
+
+
+
+
         );
 
 
@@ -37,7 +55,9 @@ export default class LoginPage extends Component {
 }
 
 
+
 const styles = StyleSheet.create({
+
     button: {
         height: 40,
         backgroundColor: 'blue',
