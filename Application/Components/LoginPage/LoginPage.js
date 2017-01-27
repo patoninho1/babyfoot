@@ -14,7 +14,6 @@ export default class LoginPage extends Component {
         this.state = {text: 'Login'};
     }
 
-    // Fonction qui récupère la position actuelle de l'utilisateur
     ValideDateNickName() {
         this.props.navigator.push(this.props.routes[1]);
     }
@@ -22,8 +21,6 @@ export default class LoginPage extends Component {
     render() {
         return (
                 <View  style={s.mainContainer}>
-
-
                     <View style={s.top}>
                         <Image style={s.img} source={require('./img/logo.png')} />
                     </View>
@@ -41,13 +38,8 @@ export default class LoginPage extends Component {
                             <Text style={s.buttonText}>Connection </Text>
                         </TouchableHighlight>
                     </View>
-
-
-
                 </View>
         );
-
-
     }
 
 }

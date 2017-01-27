@@ -3,15 +3,16 @@
  */
 import React, { Component } from 'react';
 import { Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
-
 import LoginPage from '../Components/LoginPage';
-import HomePage from '../Components/HomePage/HomePage'
+import MenuPage from '../Components/MenuPage/MenuPage';
+import HomePage from '../Components/HomePage/HomePage';
 
 const routes = [
     {title: 'First Scene', index: 0},
     {title: 'Second Scene', index: 1},
-
+    {title: 'Third Scene', index: 2},
 ];
+
 export default class Navigation extends Component {
 
     render() {
@@ -33,14 +34,18 @@ export default class Navigation extends Component {
         if (route.index=== 0) {
             return (
                 <LoginPage navigator={navigator} routes={routes}/>
-
             );
         }
 
         if (route.index=== 1) {
             return (
-                <HomePage  navigator={navigator} routes={routes}/>
+                <MenuPage  navigator={navigator} routes={routes}/>
+            );
+        }
 
+        if (route.index=== 2) {
+            return (
+                <HomePage  navigator={navigator} routes={routes}/>
             );
         }
     }
