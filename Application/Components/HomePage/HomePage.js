@@ -7,15 +7,22 @@ import {Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-nativ
 import MapView from 'react-native-maps';
 
 export default class HomePage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
 
     AddBaby() {
 
     }
 
     Geoloc(){
-
     }
 
+    onMapPress(event) {
+        console.log("evenement: "+event);
+    }
 
     render() {
         return (
@@ -28,6 +35,8 @@ export default class HomePage extends Component {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
+                         onPress={(event) => this.onMapPress(event)}
+                         showsUserLocation={true}
                 >
                     <MapView.Marker
                         coordinate={{latitude: 48.8589507, longitude: 2.2775174,}}
