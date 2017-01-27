@@ -13,20 +13,29 @@ export default class HomePage extends Component {
     }
 
     Geoloc(){
-        this.props.navigator.pop();
+
     }
+
 
     render() {
         return (
             <View style={styles.container}>
+
                 <MapView style={styles.map}
-                         initialRegion={{
-                             latitude: 37.78825,
-                             longitude: -122.4324,
-                             latitudeDelta: 0.0922,
-                             longitudeDelta: 0.0421,
-                         }}
-                />
+                    initialRegion={{
+                        latitude: 48.8589507,
+                        longitude: 2.2775174,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                >
+                    <MapView.Marker
+                        coordinate={{latitude: 48.8589507, longitude: 2.2775174,}}
+
+                    />
+                </MapView>
+
+
 
                 <View style={styles.buttonContainer}>
                     <TouchableHighlight onPress={() => this.AddBaby()} style={styles.button}>
@@ -36,11 +45,10 @@ export default class HomePage extends Component {
                     <TouchableHighlight onPress={() => this.Geoloc()} style={styles.button}>
                         <Text style={styles.buttonText}>Me localiser</Text>
                     </TouchableHighlight>
-                    </View>
                 </View>
+
+            </View>
         );
-
-
     }
 
 }
