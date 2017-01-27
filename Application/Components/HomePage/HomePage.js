@@ -8,19 +8,36 @@ import MapView from 'react-native-maps';
 
 export default class HomePage extends Component {
 
+    AddBaby() {
+
+    }
+
+    BackMenu(){
+        this.props.navigator.pop();
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <MapView
-                    style={styles.map}
-                    initialRegion={{
-                        latitude: 37.78825,
-                        longitude: -122.4324,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
+                <MapView style={styles.map}
+                         initialRegion={{
+                             latitude: 37.78825,
+                             longitude: -122.4324,
+                             latitudeDelta: 0.0922,
+                             longitudeDelta: 0.0421,
+                         }}
                 />
-            </View>
+
+                <View style={styles.buttonContainer}>
+                    <TouchableHighlight onPress={() => this.AddBaby()} style={styles.button}>
+                        <Text style={styles.buttonText}>Ajouter un baby</Text>
+                    </TouchableHighlight>
+
+                    <TouchableHighlight onPress={() => this.BackMenu()} style={styles.button}>
+                        <Text style={styles.buttonText}>Retour Menu</Text>
+                    </TouchableHighlight>
+                    </View>
+                </View>
         );
 
 
@@ -40,7 +57,31 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        height: 200,
+        height: 480,
         width: window.width
     },
+
+    buttonContainer: {
+        position: 'absolute',
+        bottom: 0,
+        width: window.width,
+        flexDirection:'row',
+        flexWrap:'wrap'
+    },
+    button: {
+        height: 60,
+        width:150,
+        margin: 15,
+        backgroundColor: 'orange',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: 'skyblue',
+        borderWidth: 2,
+    },
+    buttonText: {
+        fontSize: 18,
+        fontWeight: '500',
+        color: 'white'
+    },
+
 });
