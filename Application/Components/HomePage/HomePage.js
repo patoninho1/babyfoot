@@ -31,7 +31,8 @@ export default class HomePage extends Component {
                 >
                     <MapView.Marker
                         coordinate={{latitude: 48.8589507, longitude: 2.2775174,}}
-
+                        title={"dede"}
+                        description={"gertrude"}
                     />
                 </MapView>
 
