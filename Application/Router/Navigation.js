@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
 import LoginPage from '../Components/LoginPage';
 import MenuPage from '../Components/MenuPage';
-import HomePage from '../Components/HomePage/HomePage';
+import HomePage from '../Components/HomePage';
 
 const routes = [
     {title: 'First Scene', index: 0},
