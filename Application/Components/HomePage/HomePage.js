@@ -12,7 +12,7 @@ export default class HomePage extends Component {
 
     }
 
-    BackMenu(){
+    Geoloc(){
         this.props.navigator.pop();
     }
 
@@ -33,8 +33,8 @@ export default class HomePage extends Component {
                         <Text style={styles.buttonText}>Ajouter un baby</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight onPress={() => this.BackMenu()} style={styles.button}>
-                        <Text style={styles.buttonText}>Retour Menu</Text>
+                    <TouchableHighlight onPress={() => this.Geoloc()} style={styles.button}>
+                        <Text style={styles.buttonText}>Me localiser</Text>
                     </TouchableHighlight>
                     </View>
                 </View>
