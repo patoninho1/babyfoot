@@ -8,14 +8,26 @@ import MapView from 'react-native-maps';
 
 export default class HomePage extends Component {
 
-    AddBaby() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            markers:[
+                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title:"dede", description:"gertrude"},
+                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title:"dede", description:"gertrude"},
+                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title:"dede", description:"gertrude"},
+                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title:"dede", description:"gertrude"},
+            ],
+        };
+    }
 
+    AddBaby() {
+        this.state.markers.push({coordinate: {latitude: 48.8089507, longitude: 2.2075174}});
+        this.render();
     }
 
     Geoloc(){
 
     }
-
 
     render() {
         return (
@@ -29,14 +41,16 @@ export default class HomePage extends Component {
                         longitudeDelta: 0.0421,
                     }}
                 >
-                    <MapView.Marker
-                        coordinate={{latitude: 48.8589507, longitude: 2.2775174,}}
-                        title={"dede"}
-                        description={"gertrude"}
-                    />
+
+                    {this.state.markers.map(marker => (
+                        <MapView.Marker
+                            coordinate={marker.coordinate}
+                            title={marker.title}
+                            description={marker.description}
+                        />
+                    ))}
+
                 </MapView>
-
-
 
                 <View style={styles.buttonContainer}>
                     <TouchableHighlight onPress={() => this.AddBaby()} style={styles.button}>
