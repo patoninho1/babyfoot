@@ -9,7 +9,7 @@ import {Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-nativ
 export default class HomePage extends Component {
 
     Disconnect() {
-        this.props.navigator.push(this.props.routes[0]);
+        this.props.navigator.pop();
     }
 
     GoToMap() {

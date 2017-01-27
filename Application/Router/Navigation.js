@@ -1,10 +1,10 @@
 /**
  * Created on 20/01/2017.
  */
-import React, { Component } from 'react';
-import { Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
+import React, {Component} from 'react';
+import {Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
 import LoginPage from '../Components/LoginPage';
-import MenuPage from '../Components/MenuPage/MenuPage';
+import MenuPage from '../Components/MenuPage';
 import HomePage from '../Components/HomePage/HomePage';
 
 const routes = [
@@ -22,36 +22,34 @@ export default class Navigation extends Component {
                 initialRouteStack={routes}
                 configureScene={(route, routeStack) =>
                     Navigator.SceneConfigs.FadeAndroid}
-                renderScene={(route, navigator) =>  this.renderScene(route,navigator)
+                renderScene={(route, navigator) => this.renderScene(route, navigator)
                 }
-                        />
+            />
         );
     }
 
 
-    renderScene(route,navigator) {
+    renderScene(route, navigator) {
 
-        if (route.index=== 0) {
+        if (route.index === 0) {
             return (
                 <LoginPage navigator={navigator} routes={routes}/>
             );
         }
 
-        if (route.index=== 1) {
+        if (route.index === 1) {
             return (
-                <MenuPage  navigator={navigator} routes={routes}/>
+                <MenuPage navigator={navigator} routes={routes}/>
             );
         }
 
-        if (route.index=== 2) {
+        if (route.index === 2) {
             return (
-                <HomePage  navigator={navigator} routes={routes}/>
+                <HomePage navigator={navigator} routes={routes}/>
             );
         }
     }
 }
 
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});
