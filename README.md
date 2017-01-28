@@ -1,2 +1,2 @@
 # babyfoot
-An app in react-native for find babyfoot and players
+An app in react-native to find babyfoot and players
