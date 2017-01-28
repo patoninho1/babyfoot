@@ -7,21 +7,21 @@ import {Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-nativ
 import MapView from 'react-native-maps';
 
 export default class HomePage extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
             markers:[
-                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title:"dede", description:"gertrude"},
-                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title:"dede", description:"gertrude"},
-                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title:"dede", description:"gertrude"},
-                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title:"dede", description:"gertrude"},
+                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title:"dede", description:"gertrude", id:'0'},
+                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title:"dede", description:"gertrude", id:'1'},
+                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title:"dede", description:"gertrude", id:'2'},
+                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title:"dede", description:"gertrude", id:'3'},
             ],
         };
     }
 
     AddBaby() {
-        this.state.markers.push({coordinate: {latitude: 48.8089507, longitude: 2.2075174}});
+        this.state.markers.push({coordinate: {latitude: 48.8089507, longitude: 2.2075174}, title:"dede", description:"gertrude", id:this.state.markers.length});
         this.render();
     }
 
@@ -49,7 +49,7 @@ export default class HomePage extends Component {
                          showsUserLocation={true}
                 >
 
-                    {this.state.markers.map(marker => (
+                    {this.state.markers.map((marker) => (
                         <MapView.Marker
                             coordinate={marker.coordinate}
                             title={marker.title}
