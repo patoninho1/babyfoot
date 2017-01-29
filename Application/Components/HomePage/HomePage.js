@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {TextInput, TouchableOpacity, Modal, Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
+import {TextInput, TouchableOpacity, Modal, Text, Navigator, TouchableHighlight, StyleSheet, View, Alert} from 'react-native';
 import MapView from 'react-native-maps';
 
 export default class HomePage extends Component {
@@ -12,8 +12,11 @@ export default class HomePage extends Component {
         super(props);
         this.state = {
             modalVisible: false,
-            titre:'Titre',
-            description:'Description',
+            newbabyfoot: false,
+            titre:'',
+            latitude:0,
+            longitude:0,
+            description:'',
             markers: [
                 {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "dede", description: "gertrude"},
                 {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "dede", description: "gertrude"},
@@ -23,47 +26,63 @@ export default class HomePage extends Component {
         };
     }
 
+    /* Button to prevent that the user want a new babyfoot*/
     AddBabyButton() {
         this.setState({modalVisible: true});
     }
 
-    AddBaby() {
-
+    /*Operation to validate the new babyfoot */
+    ValidateBabyfootCreation() {
         this.setState({modalVisible: false});
 
-        this.setState({
-            markers: [
-                ...this.state.markers,
-                {
-                    coordinate: {latitude: 49, longitude: 3},
-                    title: this.state.titre,
-                    description: this.state.description,
-                    color: "blue",
-                },
-            ],
-        });
+        /*Prevent the user that he need to click on the map*/
+        Alert.alert(
+            'New Babyfoot Location',
+            'Please select a place on the map',
+            [
+                {text: 'OK'},
+            ]
+        );
 
-        this.setState({titre:'Titre'});
-        this.setState({description:'Description'});
-
+        this.setState({newbabyfoot: true});
     }
 
     Geoloc() {
     }
 
+    /*Function to create the babyfoot marker*/
+    CreationNewBabyFootMarker() {
+        this.setState({
+            markers: [
+                ...this.state.markers,
+                {
+                    coordinate: {latitude: this.state.latitude, longitude: this.state.longitude},
+                    title: this.state.titre,
+                    description: this.state.description,
+                    color: '#01DFD7',
+                },
+            ],
+        });
+
+        this.setState({titre:''});
+        this.setState({description:''});
+        this.setState({newbabyfoot: false});
+    }
+
     onMapPress(event) {
-        console.log("coordonné latitude: " + event.nativeEvent.coordinate.latitude);
-        console.log("coordonné longitude: " + event.nativeEvent.coordinate.longitude);
+        /*Check if we need to create a new babyfoot */
+        if (this.state.newbabyfoot==true) {
+            /*Getting LatLng of the point pressed on the map */
+            this.setState({latitude: this.state.latitude = event.nativeEvent.coordinate.latitude});
+            this.setState({longitude: this.state.longitude = event.nativeEvent.coordinate.longitude});
+
+            this.CreationNewBabyFootMarker();
+        }
     }
 
 
     render() {
         return (
-
-
-
-
-
             <View style={styles.container}>
 
                 <MapView style={styles.map}
@@ -82,6 +101,7 @@ export default class HomePage extends Component {
                                         coordinate={marker.coordinate}
                                         title={marker.title}
                                         description={marker.description}
+                                        pinColor={marker.color}
                         />
                     ))}
 
@@ -119,18 +139,18 @@ export default class HomePage extends Component {
 
                             <TextInput
                                 style={styles.titre}
-                                onChangeText={(text) => this.setState({titre:text})}
-                                placeholder = {this.state.titre}
+                                onChangeText={(text) => this.setState({titre: this.state.titre = text})}
+                                placeholder = {'Titre'}
                            />
 
                             <TextInput
                                 style={styles.description} multiline={true} numberOfLines={4}
-                                onChangeText={(text) => this.setState({description:text})}
-                                placeholder = {this.state.description}
+                                onChangeText={(text) => this.setState({description: this.state.description = text})}
+                                placeholder = {'Description'}
                             />
 
                             <TouchableHighlight
-                                onPress={() => this.AddBaby()}
+                                onPress={() => this.ValidateBabyfootCreation()}
                                 style={styles.button}>
                                 <Text style={styles.buttonText}>Valider </Text>
                             </TouchableHighlight>
