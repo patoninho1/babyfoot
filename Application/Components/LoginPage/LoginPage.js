@@ -11,7 +11,7 @@ export default class LoginPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {text: 'Login'};
+        this.state = {text: ''};
     }
 
     ValideDateNickName() {
@@ -38,6 +38,7 @@ export default class LoginPage extends Component {
                     <View style={s.midle} >
                         <TextInput
                             style={s.textinput}
+                            placeholder={'Login'}
                             onChangeText={(text) => this.setState({text})}
                             value={this.state.text}
                         />
