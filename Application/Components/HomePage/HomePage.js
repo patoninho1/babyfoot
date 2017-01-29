@@ -11,7 +11,6 @@ export default class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
             modalVisible: false,
             titre:'Titre',
             description:'Description',
@@ -24,28 +23,28 @@ export default class HomePage extends Component {
         };
     }
 
-    setModalVisible(visible) {
-        this.setState({modalVisible: visible});
+    AddBabyButton() {
+        this.setState({modalVisible: true});
     }
 
     AddBaby() {
 
-        this.setState({modalVisible: true});
-
-        this.setState({titre:'Titre'});
-        this.setState({description:'Description'});
+        this.setState({modalVisible: false});
 
         this.setState({
             markers: [
                 ...this.state.markers,
                 {
                     coordinate: {latitude: 49, longitude: 3},
-                    title: "miaous",
-                    description: "pokemon",
+                    title: this.state.titre,
+                    description: this.state.description,
                     color: "blue",
                 },
             ],
         });
+
+        this.setState({titre:'Titre'});
+        this.setState({description:'Description'});
 
     }
 
@@ -89,7 +88,7 @@ export default class HomePage extends Component {
                 </MapView>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableHighlight onPress={() => this.AddBaby()} style={styles.button}>
+                    <TouchableHighlight onPress={() => this.AddBabyButton()} style={styles.button}>
                         <Text style={styles.buttonText}>Ajouter un baby</Text>
                     </TouchableHighlight>
 
@@ -131,7 +130,7 @@ export default class HomePage extends Component {
                             />
 
                             <TouchableHighlight
-                                onPress={() => this.setModalVisible(!this.state.modalVisible)}
+                                onPress={() => this.AddBaby()}
                                 style={styles.button}>
                                 <Text style={styles.buttonText}>Valider </Text>
                             </TouchableHighlight>
