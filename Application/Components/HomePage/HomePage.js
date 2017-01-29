@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
+import {TextInput, TouchableOpacity, Modal, Text, Navigator, TouchableHighlight, StyleSheet, View} from 'react-native';
 import MapView from 'react-native-maps';
 
 export default class HomePage extends Component {
@@ -11,6 +11,10 @@ export default class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
+            modalVisible: false,
+            titre:'',
+            description:'',
             markers: [
                 {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "dede", description: "gertrude"},
                 {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "dede", description: "gertrude"},
@@ -20,7 +24,14 @@ export default class HomePage extends Component {
         };
     }
 
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
+
     AddBaby() {
+
+        this.setState({modalVisible: true});
+
         this.setState({
             markers: [
                 ...this.state.markers,
@@ -32,6 +43,7 @@ export default class HomePage extends Component {
                 },
             ],
         });
+
     }
 
     Geoloc() {
@@ -40,12 +52,16 @@ export default class HomePage extends Component {
     onMapPress(event) {
         console.log("coordonné latitude: " + event.nativeEvent.coordinate.latitude);
         console.log("coordonné longitude: " + event.nativeEvent.coordinate.longitude);
-
     }
 
 
     render() {
         return (
+
+
+
+
+
             <View style={styles.container}>
 
                 <MapView style={styles.map}
@@ -78,6 +94,45 @@ export default class HomePage extends Component {
                         <Text style={styles.buttonText}>Me localiser</Text>
                     </TouchableHighlight>
                 </View>
+
+
+
+
+
+
+                <Modal
+                    animationType={"slide"}
+                    transparent={false}
+                    visible={this.state.modalVisible}
+
+                    onRequestClose={() => {
+                        alert("Modal has been closed.")
+                    }} >
+
+
+
+                    <View style={styles.modalstyle}>
+
+                            <Text>Entrer les information sur le nouveau babyfoot :</Text>
+
+                            <TextInput style={styles.titre}
+                                onChangeText={(text) => this.setState({titre:text})}
+                                value={'Titre'}
+                            />
+
+                            <TextInput style={styles.description} maxLength = {40}
+                                onChangeText={(text) => this.setState({description:text})}
+                                value={'Description'}
+                            />
+
+                            <TouchableHighlight onPress={() => this.setModalVisible(!this.state.modalVisible)} style={styles.button}>
+                                <Text style={styles.buttonText}>Valider </Text>
+                            </TouchableHighlight>
+
+                    </View>
+                </Modal>
+
+
 
             </View>
         );
@@ -124,4 +179,36 @@ const styles = StyleSheet.create({
         color: 'white'
     },
 
+
+    modalstyle: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    titre: {
+        fontSize: 30,
+        padding: 10,
+        height: 80,
+        width:250,
+        borderColor: 'white',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    description: {
+        fontSize: 20,
+        padding: 10,
+        height: 150,
+        width:250,
+        borderColor: 'white',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    text: {
+        height: 80,
+        width:200,
+        borderColor: 'gray',
+        borderWidth: 1,
+    },
 });
