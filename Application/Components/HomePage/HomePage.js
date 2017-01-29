@@ -11,26 +11,36 @@ export default class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            markers:[
-                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title:"dede", description:"gertrude", id:'0'},
-                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title:"dede", description:"gertrude", id:'1'},
-                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title:"dede", description:"gertrude", id:'2'},
-                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title:"dede", description:"gertrude", id:'3'},
+            markers: [
+                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "dede", description: "gertrude"},
+                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "dede", description: "gertrude"},
+                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title: "dede", description: "gertrude"},
+                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title: "dede", description: "gertrude"},
             ],
         };
     }
 
     AddBaby() {
-        this.state.markers.push({coordinate: {latitude: 48.8089507, longitude: 2.2075174}, title:"dede", description:"gertrude", id:this.state.markers.length});
-        this.render();
+        this.setState({
+            markers: [
+                ...this.state.markers,
+                {
+                    coordinate: {latitude: 49, longitude: 3},
+                    title: "miaous",
+                    description: "pokemon",
+                    color: "blue",
+                },
+            ],
+        });
     }
 
-    Geoloc(){
+    Geoloc() {
     }
-
 
     onMapPress(event) {
-        console.log("evenement: "+event);
+        console.log("coordonné latitude: " + event.nativeEvent.coordinate.latitude);
+        console.log("coordonné longitude: " + event.nativeEvent.coordinate.longitude);
+
     }
 
 
@@ -39,21 +49,21 @@ export default class HomePage extends Component {
             <View style={styles.container}>
 
                 <MapView style={styles.map}
-                    initialRegion={{
-                        latitude: 48.8589507,
-                        longitude: 2.2775174,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
+                         initialRegion={{
+                             latitude: 48.8589507,
+                             longitude: 2.2775174,
+                             latitudeDelta: 0.0922,
+                             longitudeDelta: 0.0421,
+                         }}
                          onPress={(event) => this.onMapPress(event)}
                          showsUserLocation={true}
                 >
 
-                    {this.state.markers.map((marker) => (
-                        <MapView.Marker
-                            coordinate={marker.coordinate}
-                            title={marker.title}
-                            description={marker.description}
+                    {this.state.markers.map((marker, i) => (
+                        <MapView.Marker key={i}
+                                        coordinate={marker.coordinate}
+                                        title={marker.title}
+                                        description={marker.description}
                         />
                     ))}
 
@@ -95,12 +105,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         width: window.width,
-        flexDirection:'row',
-        flexWrap:'wrap'
+        flexDirection: 'row',
+        flexWrap: 'wrap'
     },
     button: {
         height: 60,
-        width:150,
+        width: 150,
         margin: 15,
         backgroundColor: 'orange',
         justifyContent: 'center',
