@@ -13,8 +13,8 @@ export default class HomePage extends Component {
         this.state = {
 
             modalVisible: false,
-            titre:'',
-            description:'',
+            titre:'Titre',
+            description:'Description',
             markers: [
                 {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "dede", description: "gertrude"},
                 {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "dede", description: "gertrude"},
@@ -31,6 +31,9 @@ export default class HomePage extends Component {
     AddBaby() {
 
         this.setState({modalVisible: true});
+
+        this.setState({titre:'Titre'});
+        this.setState({description:'Description'});
 
         this.setState({
             markers: [
@@ -115,17 +118,21 @@ export default class HomePage extends Component {
 
                             <Text>Entrer les information sur le nouveau babyfoot :</Text>
 
-                            <TextInput style={styles.titre}
+                            <TextInput
+                                style={styles.titre}
                                 onChangeText={(text) => this.setState({titre:text})}
-                                value={'Titre'}
-                            />
+                                placeholder = {this.state.titre}
+                           />
 
-                            <TextInput style={styles.description} maxLength = {40}
+                            <TextInput
+                                style={styles.description} multiline={true} numberOfLines={4}
                                 onChangeText={(text) => this.setState({description:text})}
-                                value={'Description'}
+                                placeholder = {this.state.description}
                             />
 
-                            <TouchableHighlight onPress={() => this.setModalVisible(!this.state.modalVisible)} style={styles.button}>
+                            <TouchableHighlight
+                                onPress={() => this.setModalVisible(!this.state.modalVisible)}
+                                style={styles.button}>
                                 <Text style={styles.buttonText}>Valider </Text>
                             </TouchableHighlight>
 
@@ -200,10 +207,11 @@ const styles = StyleSheet.create({
         padding: 10,
         height: 150,
         width:250,
-        borderColor: 'white',
+        borderColor: 'grey',
         borderWidth: 1,
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     text: {
         height: 80,
