@@ -23,6 +23,7 @@ export default class HomePage extends Component {
                 {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title: "dede", description: "gertrude"},
                 {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title: "dede", description: "gertrude"},
             ],
+            markerGeolocalisation: []
         };
     }
 
@@ -47,7 +48,24 @@ export default class HomePage extends Component {
         this.setState({newbabyfoot: true});
     }
 
-    Geoloc() {
+    GeolocButton() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({
+                    markerGeolocalisation: this.state.markerGeolocalisation = [{
+                        coordinate: {latitude:position.coords.latitude, longitude:position.coords.longitude,
+                        }
+                    }]
+                });
+                this.refs.map.animateToRegion({
+                    latitudeDelta: 0.002,
+                    longitudeDelta: 0.002,
+                    latitude: position.coords.latitude,
+                    longitude : position.coords.longitude }, 3000);
+            },
+            (error) => alert(JSON.stringify(error)),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
     }
 
     /*Function to create the babyfoot marker*/
@@ -85,7 +103,7 @@ export default class HomePage extends Component {
         return (
             <View style={styles.container}>
 
-                <MapView style={styles.map}
+                <MapView ref="map" style={styles.map}
                          initialRegion={{
                              latitude: 48.8589507,
                              longitude: 2.2775174,
@@ -93,7 +111,6 @@ export default class HomePage extends Component {
                              longitudeDelta: 0.0421,
                          }}
                          onPress={(event) => this.onMapPress(event)}
-                         showsUserLocation={true}
                 >
 
                     {this.state.markers.map((marker, i) => (
@@ -105,6 +122,12 @@ export default class HomePage extends Component {
                         />
                     ))}
 
+                    {this.state.markerGeolocalisation.map((marker, i) => (
+                        <MapView.Marker key={i}
+                                        coordinate={marker.coordinate}
+                        />
+                    ))}
+
                 </MapView>
 
                 <View style={styles.buttonContainer}>
@@ -112,7 +135,7 @@ export default class HomePage extends Component {
                         <Text style={styles.buttonText}>Ajouter un baby</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight onPress={() => this.Geoloc()} style={styles.button}>
+                    <TouchableHighlight onPress={() => this.GeolocButton()} style={styles.button}>
                         <Text style={styles.buttonText}>Me localiser</Text>
                     </TouchableHighlight>
                 </View>
