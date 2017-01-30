@@ -64,7 +64,7 @@ export default class HomePage extends Component {
                     longitude : position.coords.longitude }, 3000);
             },
             (error) => alert(JSON.stringify(error)),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            {enableHighAccuracy: false, timeout: 30000, maximumAge: 1000}
         );
     }
 
