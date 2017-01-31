@@ -1,6 +1,18 @@
 # babyfoot
 An app in react-native to find babyfoot and players.
 
+##Install :
+go to the main floders and run for install dependecies
+```
+npm install
+```
+
+##start :
+```
+react-native start
+react-native run-android
+```
+
 ##Feature :
 - Login.
 - Search for existing babyfoot (they are red if offline and green if available). 
