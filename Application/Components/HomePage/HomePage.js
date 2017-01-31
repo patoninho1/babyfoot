@@ -154,8 +154,7 @@ export default class HomePage extends Component {
                     </TouchableHighlight>
                 </View>
 
-
-
+                <Text style={styles.bottomText}>Vous n'etes pas tracker</Text>
 
 
 
@@ -270,6 +269,12 @@ const styles = StyleSheet.create({
 
     },
     text: {
+        height: 80,
+        width:200,
+        borderColor: 'gray',
+        borderWidth: 1,
+    },
+    bottomText: {
         height: 80,
         width:200,
         borderColor: 'gray',
