@@ -188,7 +188,7 @@ export default class HomePage extends Component {
                             <TextInput
                                 style={s.titre}
                                 onChangeText={(text) => this.setState({titre: this.state.titre = text})}
-                                placeholder = {'Titre'}
+                                placeholder = {'Title'}
                            />
 
                             <TextInput

@@ -7,7 +7,7 @@ An app in react-native to find babyfoot and players.
 - Add your own babyfoot place.
 - Locate yourself.
 
-##Some screenshot :
+##Somes screenshot :
 <p align="center">
 	<img src="https://raw.githubusercontent.com/patoninho1/babyfoot/master/img/1.png" width="300px">
 	<img src="https://raw.githubusercontent.com/patoninho1/babyfoot/master/img/2.png" width="300px">

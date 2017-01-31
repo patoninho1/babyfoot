@@ -66,6 +66,7 @@ module.exports = StyleSheet.create({
         padding: 10,
         height: 150,
         width:250,
+        margin:20,
         borderColor: 'grey',
         borderWidth: 1,
         alignItems: 'center',
