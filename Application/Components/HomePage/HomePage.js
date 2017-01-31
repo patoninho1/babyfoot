@@ -146,15 +146,17 @@ export default class HomePage extends Component {
 
                 <View style={styles.buttonContainer}>
                     <TouchableHighlight onPress={() => this.AddBabyButton()} style={styles.button}>
-                        <Text style={styles.buttonText}>Ajouter un baby</Text>
+                        <Text style={styles.buttonText}>Add a baby</Text>
                     </TouchableHighlight>
 
                     <TouchableHighlight onPress={() => this.GeolocButton()} style={styles.button}>
-                        <Text style={styles.buttonText}>Me localiser</Text>
+                        <Text style={styles.buttonText}>Find me</Text>
                     </TouchableHighlight>
+
+                    <Text style={styles.bottomText}>You are not tracked</Text>
                 </View>
 
-                <Text style={styles.bottomText}>Vous n'etes pas tracker</Text>
+
 
 
 
@@ -171,7 +173,7 @@ export default class HomePage extends Component {
 
                     <View style={styles.modalstyle}>
 
-                            <Text>Entrer les information sur le nouveau babyfoot :</Text>
+                            <Text>Please entrer the information for the new babyfoot :</Text>
 
                             <TextInput
                                 style={styles.titre}
@@ -188,7 +190,7 @@ export default class HomePage extends Component {
                             <TouchableHighlight
                                 onPress={() => this.ValidateBabyfootCreation()}
                                 style={styles.button}>
-                                <Text style={styles.buttonText}>Valider </Text>
+                                <Text style={styles.buttonText}>Validate</Text>
                             </TouchableHighlight>
 
                     </View>
@@ -214,8 +216,8 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        height: 480,
-        width: window.width
+        height: window.height,
+        width: window.width,
     },
 
     buttonContainer: {
@@ -223,10 +225,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         width: window.width,
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     button: {
-        height: 60,
+        height: 40,
         width: 150,
         margin: 15,
         backgroundColor: 'orange',
@@ -275,9 +279,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     bottomText: {
-        height: 80,
-        width:200,
-        borderColor: 'gray',
-        borderWidth: 1,
+        height: 40,
+        fontSize: 20,
+        width:window.width,
     },
 });
