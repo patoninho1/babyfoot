@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import {TextInput, TouchableOpacity, Modal, Text, Navigator, TouchableHighlight, StyleSheet, View, Alert} from 'react-native';
 import MapView from 'react-native-maps';
+import s from './HomePageStyle';
 
 export default class HomePage extends Component {
 
@@ -114,9 +115,9 @@ export default class HomePage extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={s.container}>
 
-                <MapView ref="map" style={styles.map}
+                <MapView ref="map" style={s.map}
                          initialRegion={{
                              latitude: 48.8589507,
                              longitude: 2.2775174,
@@ -144,16 +145,16 @@ export default class HomePage extends Component {
 
                 </MapView>
 
-                <View style={styles.buttonContainer}>
-                    <TouchableHighlight onPress={() => this.AddBabyButton()} style={styles.button}>
-                        <Text style={styles.buttonText}>Add a baby</Text>
+                <View style={s.buttonContainer}>
+                    <TouchableHighlight onPress={() => this.AddBabyButton()} style={s.button}>
+                        <Text style={s.buttonText}>Add a baby</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight onPress={() => this.GeolocButton()} style={styles.button}>
-                        <Text style={styles.buttonText}>Find me</Text>
+                    <TouchableHighlight onPress={() => this.GeolocButton()} style={s.button}>
+                        <Text style={s.buttonText}>Find me</Text>
                     </TouchableHighlight>
 
-                    <Text style={styles.bottomText}>You are not tracked</Text>
+                    <Text style={s.bottomText}>You are not tracked</Text>
                 </View>
 
 
@@ -171,26 +172,26 @@ export default class HomePage extends Component {
 
 
 
-                    <View style={styles.modalstyle}>
+                    <View style={s.modalstyle}>
 
                             <Text>Please entrer the information for the new babyfoot :</Text>
 
                             <TextInput
-                                style={styles.titre}
+                                style={s.titre}
                                 onChangeText={(text) => this.setState({titre: this.state.titre = text})}
                                 placeholder = {'Titre'}
                            />
 
                             <TextInput
-                                style={styles.description} multiline={true} numberOfLines={4}
+                                style={s.description} multiline={true} numberOfLines={4}
                                 onChangeText={(text) => this.setState({description: this.state.description = text})}
                                 placeholder = {'Description'}
                             />
 
                             <TouchableHighlight
                                 onPress={() => this.ValidateBabyfootCreation()}
-                                style={styles.button}>
-                                <Text style={styles.buttonText}>Validate</Text>
+                                style={s.button}>
+                                <Text style={s.buttonText}>Validate</Text>
                             </TouchableHighlight>
 
                     </View>
@@ -203,84 +204,3 @@ export default class HomePage extends Component {
     }
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    map: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        height: window.height,
-        width: window.width,
-    },
-
-    buttonContainer: {
-        position: 'absolute',
-        bottom: 0,
-        width: window.width,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    button: {
-        height: 40,
-        width: 150,
-        margin: 15,
-        backgroundColor: 'orange',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: 'skyblue',
-        borderWidth: 2,
-    },
-    buttonText: {
-        fontSize: 18,
-        fontWeight: '500',
-        color: 'white'
-    },
-
-
-    modalstyle: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    titre: {
-        fontSize: 30,
-        padding: 10,
-        height: 80,
-        width:250,
-        borderColor: 'white',
-        borderWidth: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    description: {
-        fontSize: 20,
-        padding: 10,
-        height: 150,
-        width:250,
-        borderColor: 'grey',
-        borderWidth: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-
-    },
-    text: {
-        height: 80,
-        width:200,
-        borderColor: 'gray',
-        borderWidth: 1,
-    },
-    bottomText: {
-        height: 40,
-        fontSize: 20,
-        width:window.width,
-    },
-});
