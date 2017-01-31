@@ -18,10 +18,10 @@ export default class HomePage extends Component {
             longitude:0,
             description:'',
             markers: [
-                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "dede", description: "gertrude"},
-                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "dede", description: "gertrude"},
-                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title: "dede", description: "gertrude"},
-                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title: "dede", description: "gertrude"},
+                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "Chez michel", description: "venez comme vous êtes", color:'green'},
+                {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "Bar st Andre", description: "pas cher", color:'red'},
+                {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title: "Sale de jeux", description: "lieu climatise", color:'red'},
+                {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title: "lite cafee", description: "jouez dans le silence", color:'red'},
             ],
             markerGeolocalisation: []
         };
@@ -50,13 +50,17 @@ export default class HomePage extends Component {
 
     GeolocButton() {
         navigator.geolocation.getCurrentPosition(
+            /*Get the current user localisation*/
             (position) => {
                 this.setState({
                     markerGeolocalisation: this.state.markerGeolocalisation = [{
-                        coordinate: {latitude:position.coords.latitude, longitude:position.coords.longitude,
-                        }
+                        coordinate: {latitude:position.coords.latitude, longitude:position.coords.longitude
+                        },
+                        color:'blue'
                     }]
                 });
+
+                /*Moove the map on the user localisation*/
                 this.refs.map.animateToRegion({
                     latitudeDelta: 0.002,
                     longitudeDelta: 0.002,
@@ -77,10 +81,19 @@ export default class HomePage extends Component {
                     coordinate: {latitude: this.state.latitude, longitude: this.state.longitude},
                     title: this.state.titre,
                     description: this.state.description,
-                    color: '#01DFD7',
+                    color: 'green',
                 },
             ],
         });
+
+        /*Prevent the user that he need to click on the map*/
+        Alert.alert(
+            'Confirmation',
+            'Your babyfoot has been perfectly added',
+            [
+                {text: 'OK'},
+            ]
+        );
 
         this.setState({titre:''});
         this.setState({description:''});
@@ -125,6 +138,7 @@ export default class HomePage extends Component {
                     {this.state.markerGeolocalisation.map((marker, i) => (
                         <MapView.Marker key={i}
                                         coordinate={marker.coordinate}
+                                        pinColor={marker.color}
                         />
                     ))}
 
