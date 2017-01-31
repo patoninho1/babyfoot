@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import {TextInput, TouchableOpacity, Modal, Text, Navigator, TouchableHighlight, StyleSheet, View, Alert} from 'react-native';
 import MapView from 'react-native-maps';
 import s from './HomePageStyle';
+import StarRating from 'react-native-star-rating';
 
 export default class HomePage extends Component {
 
@@ -15,6 +16,7 @@ export default class HomePage extends Component {
             modalVisible: false,
             newbabyfoot: false,
             titre:'',
+            starCount: 3.5,
             latitude:0,
             longitude:0,
             description:'',
@@ -26,6 +28,13 @@ export default class HomePage extends Component {
             ],
             markerGeolocalisation: []
         };
+    }
+
+    /*Call when changing the star rating*/
+    onStarRatingPress(rating) {
+        this.setState({
+            starCount: rating
+        });
     }
 
     /* Button to prevent that the user want a new babyfoot*/
@@ -187,7 +196,12 @@ export default class HomePage extends Component {
                                 onChangeText={(text) => this.setState({description: this.state.description = text})}
                                 placeholder = {'Description'}
                             />
-
+                        <StarRating
+                            disabled={false}
+                            maxStars={5}
+                            rating={this.state.starCount}
+                            selectedStar={(rating) => this.onStarRatingPress(rating)}
+                        />
                             <TouchableHighlight
                                 onPress={() => this.ValidateBabyfootCreation()}
                                 style={s.button}>
