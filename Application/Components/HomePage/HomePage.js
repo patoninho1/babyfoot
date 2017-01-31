@@ -32,9 +32,26 @@ export default class HomePage extends Component {
 
     /*Function called before the page is rendered */
     componentWillMount() {
-        /*ICICICICICICIII*/
+
+        /* Uncomment this if you use a real server : */
+        /*
+         let response = fetch('http://localhost:3000/api/Babyfoot', {
+             method: 'GET',
+             headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+             }
+         });
+         this.setState({markers:response});
+         */
+
+        /*For simulate the server call :*/
+
+
+
     }
-        /*Call when changing the star rating*/
+
+    /*Call when changing the star rating*/
     onStarRatingPress(rating) {
         this.setState({
             starCount: rating
@@ -88,6 +105,26 @@ export default class HomePage extends Component {
 
     /*Function to create the babyfoot marker*/
     CreationNewBabyFootMarker() {
+
+
+        /* Uncomment this if you use a real server : */
+        /*
+         fetch('http://localhost:3000/api/Babyfoot', {
+             method: 'POST',
+             headers: {
+             'Accept': 'application/json',
+             'Content-Type': 'application/json',
+             },
+             body: JSON.stringify({
+                 coordinate: {latitude: this.state.latitude, longitude: this.state.longitude},
+                 title: this.state.titre,
+                 description: this.state.description,
+                 color: 'green',
+             })
+         });
+         */
+
+        /*For simulate the server call :*/
         this.setState({
             markers: [
                 ...this.state.markers,
@@ -99,6 +136,8 @@ export default class HomePage extends Component {
                 },
             ],
         });
+
+
 
         /*Prevent the user that he need to click on the map*/
         Alert.alert(
