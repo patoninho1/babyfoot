@@ -30,7 +30,11 @@ export default class HomePage extends Component {
         };
     }
 
-    /*Call when changing the star rating*/
+    /*Function called before the page is rendered */
+    componentWillMount() {
+        /*ICICICICICICIII*/
+    }
+        /*Call when changing the star rating*/
     onStarRatingPress(rating) {
         this.setState({
             starCount: rating
