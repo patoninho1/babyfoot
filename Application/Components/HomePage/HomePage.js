@@ -45,13 +45,12 @@ export default class HomePage extends Component {
         this.setState({
             markers: [
                 ...this.state.markers,
-                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "Chez michel", description: "venez comme vous êtes", color:'green'},
+                {coordinate: {latitude: 48.8589507, longitude: 2.2575174}, title: "Chez ZAZA", description: "venez comme vous êtes", color:'green'},
                 {coordinate: {latitude: 48.8889507, longitude: 2.2375174}, title: "Bar st Andre", description: "pas cher", color:'red'},
                 {coordinate: {latitude: 48.8789507, longitude: 2.2475174}, title: "Sale de jeux", description: "lieu climatise", color:'red'},
                 {coordinate: {latitude: 48.8689507, longitude: 2.2675174}, title: "lite cafee", description: "jouez dans le silence", color:'red'},
             ],
         });
-
 
     }
 
